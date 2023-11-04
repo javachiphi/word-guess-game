@@ -21,8 +21,14 @@ function GuessGame({resetGame}) {
   };
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value);  
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+        handleClick();
+    } 
+  }
 
   const handleClick = () => {
     if (!inputValue.trim()) return; // Don't do anything if the input is empty or just spaces
@@ -54,12 +60,7 @@ function GuessGame({resetGame}) {
     return /^[a-zA-Z]$/.test(input)
 }
   };
-  
-  
-  console.log('currWord', currWord)
-  console.log(guessedLetters.join('') === currWord)
-  console.log('status', status)
-  console.log('status', status === 'win')
+
   return (
     <div className="App">
         <div className="word-display">{generateWordDisplay()}</div>
@@ -78,6 +79,7 @@ function GuessGame({resetGame}) {
             <input
               value={inputValue}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               disabled={numGuesses <= 0}
             />
             <button onClick={handleClick} disabled={numGuesses <= 0 || (inputValue !== '' && !isSingleLetter(inputValue))}>Guess</button>
