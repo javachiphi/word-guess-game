@@ -3,18 +3,33 @@ import { getRandomWord } from "./utils.js";
 import AlphabetButtons from "./AlphabetButtons.js"
 import "./App.css";
 
+const giveVowelHint = (word) => {
+    const arr = word.split(''); 
 
-///error case. if a user types more than 1 letter, or number, non-number -> disable submit button
-// no repeat letter -> 
+    let initialHints = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (['a', 'e', 'i', 'o', 'u'].includes(arr[i])) {
+            initialHints.push(arr[i]);
+        }
+    }
+    
+    return initialHints; 
+}
+
+
 
 function GuessGame({resetGame}) {
   const initialWord = getRandomWord();
+  const initialHints = giveVowelHint(initialWord);
 
   const [currWord, setCurrWord] = useState(initialWord);
-  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState(initialHints);
   const [numGuesses, setNumGuesses] = useState(10);
   const [status, setStatus] = useState('');
   const [selectedLetter, setSelectedLetter] = useState('');
+
+
 
   const handleLetterClick = (letter) => {
     console.log('letter', letter)
