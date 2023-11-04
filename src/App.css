@@ -17,3 +17,49 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+}
+
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.alphabet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.alphabet-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Spacing between rows */
+}
+
+.alphabet-button {
+  font-family: 'Unbounded', sans-serif;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.alphabet-button:hover {
+  background-color: #e0e0e0;
+}
+
+.alphabet-button.disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}

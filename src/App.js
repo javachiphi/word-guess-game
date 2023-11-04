@@ -14,8 +14,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Guess The Word 🚀</h1>
-        <h3>Word Display</h3>
         <GuessGame key={key} resetGame={resetGame} />
       </header>
     </div>
